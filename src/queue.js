@@ -13,47 +13,46 @@ const { NotImplementedError } = require('../extensions/index.js');
  * queue.dequeue(); // returns the top element from queue and deletes it, returns 1
  * queue.getUnderlyingList() // returns { value: 3, next: null }
  */
-class QNode
-{
-    constructor(key)
+class Queue {
+
+  constructor(key)
     {
         this.key = key;
         this.next = null;
     }
-}
- 
-let front = null, rear = null;
- 
-function enqueue(key)
-{
-    // Create a new LL node
-        let temp = new QNode(key);
+    
+  getUnderlyingList() {
+    throw new NotImplementedError('Not implemented');
+    // remove line with error and write your code here
+  }
+
+  enqueue(key) {
+    let front = null;
+    let rear = null;
+    let temp = new Queue(key);
    
-        // If queue is empty, then new node is front and rear both
         if (rear == null) {
             front = rear = temp;
             return;
         }
-   
-        // Add the new node at the end of queue and change rear
+
         rear.next = temp;
         rear = temp;
-}
- 
- 
-function dequeue()
-{
-    // If queue is empty, return NULL.
+  }
+
+  dequeue() {
+    let front = null;
+    let rear = null;
+    
         if (front == null)
             return;
    
-        // Store previous front and move front one node ahead
         let temp = front;
         front = front.next;
    
-        // If front becomes NULL, then change rear also as NULL
         if (front == null)
             rear = null;
+  }
 }
 
 module.exports = {
